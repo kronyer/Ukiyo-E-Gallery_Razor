@@ -1,0 +1,69 @@
+﻿@page
+@model Ukiyo_e_Gallery.Pages.Admin.Artists.IndexModel
+@{
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Artists List</h2>
+        </div>
+        <div class="col-6">
+            <a class="btn btn-primary" asp-page="create">
+                Register new artist
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Death
+            </th>
+            <th>
+                Death
+            </th>
+            <th>
+                Country
+            </th>
+        </tr>
+        <tr>
+            
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach(var artist in Model.Artists)
+        {
+            <tr>
+                <td>
+                    @artist.Name
+                </td>
+                
+                <td>
+                    @artist.Birth?.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                   @artist.Death?.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @artist.Country
+                </td>
+                <td class="align-content-center text-center align-items-center center">
+                    <div class="btn-group align-content-center text-center align-items-center center" role="group">
+                        <a asp-page="Edit" asp-route-id="@artist.Id" class="btn btn-primary" style="width:100px;">Edit</a>
+                        <form method="post" asp-page-handler="Delete">
+                            <input type="hidden" name="id" value="@artist.Id" />
+                            <button type="submit" class="btn btn-secondary mx-3" style="width:100px" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+﻿@page
+@model Ukiyo_e_Gallery.Pages.Admin.Ukiyoes.EditModel
+@{
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="@Model.Ukiyoes.Id" />
+    <div class="container">
+        <div class=" row pb-3">
+            <div class="col-9">
+                <h2 class="text-primary pl-3">
+                    Post Ukiyo-e
+                </h2>
+                <hr />
+
+                <div class="mb-3">
+                    <label asp-for="@Model.Ukiyoes.Name">Name</label>
+                    <input type="text" asp-for="@Model.Ukiyoes.Name" class="form-control" />
+                    <span asp-validation-for="@Model.Ukiyoes.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Ukiyoes.Description">Description</label>
+                    <textarea asp-for="@Model.Ukiyoes.Description" class="form-control"></textarea>
+
+                    <span asp-validation-for="@Model.Ukiyoes.Description" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Ukiyoes.ArtistId">Name</label>
+                    <select asp-for="@Model.Ukiyoes.ArtistId" asp-items="@Model.ArtistList" class="form-select">
+                        <option disabled selected>--Select An Artist--</option>
+                    </select>
+                    <span asp-validation-for="@Model.Ukiyoes.ArtistId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+        <a asp-page="Index" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });
+    </script>
+}

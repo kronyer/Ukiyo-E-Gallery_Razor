@@ -1,0 +1,38 @@
+﻿@page
+@model Ukiyo_e_Gallery.Pages.Admin.Artists.CreateModel
+@{
+}
+
+<form method="post">
+    <div class="container">
+        <div class="row">
+            <h2>Register an Artist</h2>
+            <hr />
+            <div class="col-5">
+                <div class="mb-3">
+                    <label asp-for="@Model.Artist.Name">Name</label>
+                    <input type="text" asp-for="@Model.Artist.Name" class="form-control" />
+                    <span asp-validation-for="@Model.Artist.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Artist.Birth">Birth</label>
+                    <input type="date" asp-for="@Model.Artist.Birth" class="form-control" />
+                    <span asp-validation-for="@Model.Artist.Birth" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Artist.Death">Death</label>
+                    <input type="date" asp-for="@Model.Artist.Death" class="form-control" />
+                    <span asp-validation-for="@Model.Artist.Death" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Artist.Country">Country</label>
+                    <input type="text" asp-for="@Model.Artist.Country" class="form-control" />
+                    <span asp-validation-for="@Model.Artist.Country" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-asp-page="Index" class="btn btn-secondary">Back</a>
+            </div>
+            
+        </div>
+    </div>
+</form>

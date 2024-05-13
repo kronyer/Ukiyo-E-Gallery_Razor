@@ -1,0 +1,49 @@
+﻿@page
+@model Ukiyo_e_Gallery.Pages.Admin.Ukiyoes.CreateModel
+@{
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class=" row pb-3">
+            <div class="col-9">
+                <h2 class="text-primary pl-3">
+                    Post Ukiyo-e
+                </h2>
+                <hr />
+
+                <div class="mb-3">
+                    <label asp-for="@Model.Ukiyoe.Name">Name</label>
+                    <input type="text" asp-for="@Model.Ukiyoe.Name" class="form-control" />
+                    <span asp-validation-for="@Model.Ukiyoe.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Ukiyoe.Description">Description</label>
+                    <textarea asp-for="@Model.Ukiyoe.Description" class="form-control"></textarea>
+                    <span asp-validation-for="@Model.Ukiyoe.Description" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Ukiyoe.Image">Image</label>
+                    <input type="file" name="files" id="uploadBox" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Ukiyoe.ArtistId">Artist</label>
+                    <select asp-for="@Model.Ukiyoe.ArtistId" asp-items="@Model.ArtistList" class="form-select">
+                        <option disabled selected>--Select An Artist--</option>
+                    </select>
+                    <span asp-validation-for="@Model.Ukiyoe.ArtistId" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Ukiyoe.PublishDate">Original Publish</label>
+                    <input type="number" asp-for="@Model.Ukiyoe.PublishDate" class="form-control" />
+                    <span asp-validation-for="@Model.Ukiyoe.PublishDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-page="Index" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+

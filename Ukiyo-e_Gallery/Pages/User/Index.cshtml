@@ -1,0 +1,74 @@
+﻿@page
+@using Microsoft.AspNetCore.Html
+@model Ukiyo_e_Gallery.Pages.User.IndexModel
+@{
+}
+<style>
+    .truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Número máximo de linhas exibidas */
+        -webkit-box-orient: vertical;
+    }
+
+</style>
+
+
+<div class="row container pb-3 backgroundWhite">
+    @foreach (var category in Model.Artists)
+    {
+        <h2 class="text-black pl-1"><b>@category.Name</b></h2>
+        <div class="col-12">
+            <div class="row my-3">
+                @foreach (var img in Model.Images.Where(x => x.ArtistId == category.Id))
+                {
+                    <div class="col-lg-4 col-md-6 pb-4 filter">
+                        <div class="card card-img-top bg-white rounded">
+                            <div class="card-body pb-1 row ">
+                                <div class="col-8 h5 fw-bolder">@img.Name</div>
+                            </div>
+                            <img class="card-img-top img-fluid d-block mx-auto mb-3" src="@img.Image" alt="image">
+                            <div class="card-body p-1 px-3 row">
+                                <div class="col-6">
+                                    <span class="badge p-2 border w-100 text-dark border-dark ">@img.Artist.Name</span>
+                                </div>
+                                <div class="col-6">
+                                    @if (img.PublishDate == 0)
+                                    {
+                                    <span class="badge p-2 border w-100 text-dark border-dark ">
+                                            ?
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge p-2 border w-100 text-dark border-dark ">
+                                            @img.PublishDate
+                                        </span>
+                                        
+                                    }
+                                </div>
+                                <div class="col-12 pt-2" style="font-size:13px; text-align:justify">
+                                    @{
+                                        string changedText = img.Description.Replace(Environment.NewLine, "<br>");
+                                        if (changedText.Length > 100)
+                                            changedText = changedText.Remove(100);
+                                        changedText += "...";
+                                        HtmlString text = new HtmlString(changedText);
+                                    }
+                                    <p>@text</p>
+                                </div>
+                                <div class="col-12 p-1">
+                                    <a asp-page="Details" asp-route-id="@img.Id" class="btn btn-dark form-control btn-sm p-2" style="height:40px">Ver mais</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                }
+            </div>
+        </div>
+    }
+</div>
+
+

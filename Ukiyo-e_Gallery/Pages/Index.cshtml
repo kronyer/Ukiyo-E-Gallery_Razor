@@ -4,7 +4,29 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<header class="bg-white py-5">
+    <div class="container px-5">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-xl-8 col-xxl-5">
+                <div class="my-5">
+                    <h2 class="text-left fw-bold mb-0">Bem vindo a Galeria de Ukiyo-e</h2>
+                    <br />
+                    <p class="lead text-muted text-left mb-4" style="font-size: 1.1em; font-weight: 700;">
+                        Esse projeto é um banco de dados de Ukiyo-e, com autorização e autenticação, possui arquitetura N-tier e permite o cadastrar novas imagens, editar e deletar. Além de possuir um cadastro de artistas, que seriam as categorias como essas imagens são separadas
+                    </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-center">
+                        <a class="btn btn-dark btn-lg  fw-bold text-uppercase" asp-page="/User/Index" style="width: 150px; height:50px; font-size:1em;">
+                            Ver galeria
+                        </a>
+                        <a class="btn btn-outline-dark fw-bold btn-lg text-uppercase" href="#projects" style="width: 150px; height:50px;font-size:1em;">
+                            Ver código
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-7 justify-content-center align-content-center text-center ">
+                <img class="img-fluid rounded-3 my-5" src="~/Fera.png" alt="hero image">
+            </div>
+        </div>
+    </div>
+</header>

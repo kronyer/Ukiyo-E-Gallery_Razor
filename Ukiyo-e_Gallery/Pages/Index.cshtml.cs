@@ -12,9 +12,8 @@ namespace Ukiyo_e_Gallery.Pages
             _logger = logger;
         }
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
-            return RedirectToPage("/User/Index");
         }
     }
 }

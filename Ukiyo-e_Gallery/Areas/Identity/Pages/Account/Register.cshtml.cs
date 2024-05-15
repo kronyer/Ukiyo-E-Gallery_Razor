@@ -124,12 +124,7 @@ namespace Ukiyo_e_Gallery.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
-                if (!await _roleManager.RoleExistsAsync(SD.UserRole))
-                {
-                    await _roleManager.CreateAsync(new IdentityRole(SD.AdministratorRole));
-                    await _roleManager.CreateAsync(new IdentityRole(SD.ColaboratorRole));
-                    await _roleManager.CreateAsync(new IdentityRole(SD.UserRole));
-                }
+               
 
                 if (result.Succeeded)
                 {

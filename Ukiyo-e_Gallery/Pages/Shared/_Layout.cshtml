@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Ukiyo_e_Gallery.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav class="navbar bg-dark  navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" data-bs-theme="dark">
+        <nav class="navbar bg-dark fs-6 navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" data-bs-theme="dark">
             <div class="container">
                 <a class="navbar-brand text-white" asp-area="" asp-page="/Index">
                     <img src="~/logo.png" style="width:60px" class="mx-3" />
@@ -19,7 +22,7 @@
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                        
+
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -28,7 +31,7 @@
                             <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/User/Index">Galeria</a>
                         </li>
                         @if (User.IsInRole(SD.AdministratorRole))
                         {
@@ -39,14 +42,12 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item text-dark" asp-area="" asp-page="/Admin/Artists/Index">Artists</a></li>
                                     <li><a class="dropdown-item text-dark" asp-area="" asp-page="/Admin/Ukiyoes/Index">Ukiyoe</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item text-dark" asp-area="Identity" asp-page="/Account/Register">Register accounts</a></li>
                                 </ul>
                             </li>
                         }
 
-                        
+
                     </ul>
                 </div>
             </div>
@@ -68,7 +69,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    
+
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

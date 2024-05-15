@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Shared\Component\" />
     <Folder Include="wwwroot\Images\Ukiyoes\" />
   </ItemGroup>
 
